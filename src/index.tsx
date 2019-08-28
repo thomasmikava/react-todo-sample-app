@@ -7,6 +7,9 @@ import { createStore, Store } from "redux";
 import { rootReducer, IRootState, IRootActions } from './redux';
 import { addTaskAction } from './redux/actions/tasks';
 import { Provider } from 'react-redux';
+import { SatestoComponent, Staesto2 } from './hook-components';
+import { Palitre } from './references';
+import { Timer } from './hook-components/timer';
 
 export const store: Store<IRootState, IRootActions> = 
     createStore(rootReducer);
@@ -14,7 +17,7 @@ export const store: Store<IRootState, IRootActions> =
 const currentState = store.getState();
 store.dispatch(addTaskAction("ხვალინდელი"));
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><Timer /></Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
