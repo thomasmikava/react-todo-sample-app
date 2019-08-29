@@ -1,0 +1,28 @@
+.inputContainer {
+    padding: 5px 15px;
+    background: rgb(235, 235, 235);
+    border-radius: 5px;
+    border: 1px solid rgb(218, 218, 218);
+    margin: 5px 0;
+    display: flex;
+}
+
+.inputContainer input {
+    background: transparent;
+    border: none;
+    flex: 1;
+    outline: none;
+}
+
+.inputContainer:focus-within {
+    border: 1px solid #afcacf;
+}
+
+.errorInput {
+    background: rgb(255, 226, 226);
+    border: 1px solid red;
+    color: red;
+}
+.errorInput:focus-within {
+    border: 1px solid rgb(214, 0, 0);
+}
