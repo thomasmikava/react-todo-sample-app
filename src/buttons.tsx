@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useContext } from "react";
 import ButtonStyles from "./styles/buttons.module.css";
 import classnames from "classnames";
 import { ReactComponent as Loading } from "./styles/loading.svg";
 import { ReactComponent as Loading2 } from "./styles/loading2.svg";
+import { ThemeContext } from ".";
 
 interface ButtonProps {
     onClick?: () => void;
@@ -14,12 +15,14 @@ interface ButtonProps {
 }
 
 export const Button: React.FC<ButtonProps> = React.memo(props => {
+    const [theme, setTheme] = useContext(ThemeContext);
     return (
         <div className={classnames(
             ButtonStyles.button, ButtonStyles[props.type || "default"], props.className,
             props.isDisabled && ButtonStyles.disabled
             )}
             onClick={props.onClick}
+            style={theme}
         >
             <span>{props.children}</span>
             {props.isLoading && <span>{props.loadingComponent || <Loading />}</span>}
