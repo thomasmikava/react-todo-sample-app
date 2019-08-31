@@ -3,7 +3,7 @@ export type City = {
     name: string;
 }
 
-export const getCityByid = (id: number): Promise<City> => {
+export const getCityById = (id: number): Promise<City> => {
     return new Promise<City>((resolve) => {
         setTimeout(() => {
             resolve({ id, name: "თბილისი" });

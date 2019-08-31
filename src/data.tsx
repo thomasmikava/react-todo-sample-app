@@ -1,5 +1,8 @@
 import React, { useReducer, useEffect, useState } from "react";
-import { getCityByid, City } from "./req";
+import { getCityById, City } from "./req";
+import { CitiesController } from "./api/cities/controller";
+import { Requests } from "./api";
+import { inject } from "./modules";
 
 function counterReducer(state: number, action: "INC" | "DEC") {
     if (action === "DEC") return state - 1;
@@ -52,27 +55,42 @@ function fetchReducer<ResourceType, ErrorType>(state: FetchableData<ResourceType
     throw new Error("incorrect action");
 }
 
-export const MyCity: React.FC<{ cityId: number }> = (props) => {
-    const cityId = props.cityId;
+const useCity = (cityId: number | null) => {
     const [city, cityDispatch] = useReducer(fetchReducer, {
         isLoading: true,
     } as FetchableData<City, any>);
     useEffect(() => {
+        const CitiesController = inject("CitiesController");
         cityDispatch({
             type: "startLoading"
         });
-        getCityByid(cityId).then((city) => {
-            cityDispatch({
-                type: "successfulFetching",
-                data: city,
-            });
-        }).catch((e) => {
-            cityDispatch({
-                type: "hasFoundErrors",
-                error: e,
-            });
+        if (!cityId) return;
+        CitiesController.getById({ cityId });
+    }, [cityId]);
+
+    useEffect(() => {
+        if (!cityId) return;
+        const CityModel = inject("CityModel");
+        return CityModel.subscribeChangeById(cityId, false, (city) => {
+            if (city) {
+                cityDispatch({
+                    type: "successfulFetching",
+                    data: city,
+                });
+            } else {
+                cityDispatch({
+                    type: "hasFoundErrors",
+                    error: null,
+                });
+            }
         });
     }, [cityId]);
+    return city;
+}
+
+export const MyCity: React.FC<{ cityId: number }> = (props) => {
+    const cityId = props.cityId;
+    const city = useCity(cityId);
     return (
         <div>
             {city.isLoading ? "loading..." : (

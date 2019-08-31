@@ -1252,6 +1252,13 @@
   resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.9.tgz#d868b6febb02666330410fe7f58f3c4b8258be7b"
   integrity sha512-MNl+rT5UmZeilaPxAVs6YaPC2m6aA8rofviZbhbxpPpl61uKodfdQVsBtgJGTqGizEf02oW3tsVe7FYB8kK14A==
 
+"@types/hapi__joi@*", "@types/hapi__joi@^15.0.1":
+  version "15.0.3"
+  resolved "https://registry.yarnpkg.com/@types/hapi__joi/-/hapi__joi-15.0.3.tgz#eeeca99e3829636975bf39532d6e8279409c78f2"
+  integrity sha512-kncvQstpAQSjQ+J+tL2oYerjOEepv+yJHKM/JD/NmFZyDcy3rYOBcMJhdHRDjBxuSZu3ipGECszhgtmug9VSuw==
+  dependencies:
+    "@types/hapi__joi" "*"
+
 "@types/hoist-non-react-statics@^3.3.0":
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
@@ -9367,6 +9374,14 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typesafe-joi@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/typesafe-joi/-/typesafe-joi-2.0.6.tgz#3b560cd02ed3dbba50e695914b39a5b838a8bf7a"
+  integrity sha512-bCFahfvOW9DjMEbq+XPajlVEbESW0WfKxkDKq5lgggCUAjfwIqVdjvV4mquXZuSfLMJirBZe15/jE8hkXOt5JQ==
+  dependencies:
+    "@types/hapi__joi" "^15.0.1"
+    "@types/node" "*"
 
 typescript@3.5.3:
   version "3.5.3"
