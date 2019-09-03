@@ -1,4 +1,4 @@
-import { CitySchema, City } from "../api/cities/helper-schemas";
+import { CitySchema, ICity } from "../api/cities/helper-schemas";
 import {
 	ICRUDActionTypes,
 	ICRUDActionObjs,
@@ -15,10 +15,10 @@ import {
 	defaultReducer,
 } from "../redux/default-settings";
 
-type DOC = City;
-type IdKey = "id";
-type IdType = number;
-const keyOfId: IdKey = "id";
+type DOC = ICity;
+type IdKey = "_id";
+type IdType = ObjectId;
+const keyOfId: IdKey = "_id";
 
 // ==============ACTIONS===============
 
@@ -69,7 +69,7 @@ function cityModelWrapper<
 	});
 
 	class City extends Model<City> implements DOC {
-        id: DOC["id"];
+        _id: DOC["_id"];
         name: DOC["name"];
         createdAt: DOC["createdAt"];
         updatedAt: DOC["updatedAt"];

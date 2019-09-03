@@ -24,7 +24,9 @@ export class CitiesController {
     getById = async (args: IAGETCity, loadFresh?: boolean): Promise<IRGETCity> => {
         if (!loadFresh) {
             const city = this.CityModel.findByIdSync(args.cityId, true);
-            if (city) return city;
+            if (city) {
+                return city;
+            }
         }
         return this.Request.send("GET", `/api/cities/:cityId`, args, null, {
             responseSchema: RGETCitySchema
@@ -38,7 +40,7 @@ export class CitiesController {
         return this.Request.send("PUT", `/api/cities/:cityId`, args, null, {
             requestSchema: RPUTCitySchema,
         }).then((city: IRPUTCity) => {
-            this.CityModel.updateOneSync({ id: city.id }, city);
+            this.CityModel.updateOneSync({ _id: city._id }, city);
             return city;
         });
     }

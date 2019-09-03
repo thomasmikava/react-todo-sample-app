@@ -1,9 +1,9 @@
 import Joi, { SchemaToType } from "../../utils/joi";
 
 export const CitySchema = Joi.object({
-    id: Joi.number().integer().required(),
-    name: Joi.string().required(),
-    createdAt: Joi.date().required(),
-    updatedAt: Joi.date().required(),
+	_id: Joi.objectId().required(),
+	name: Joi.string().required(),
+	createdAt: Joi.date().required(),
+	updatedAt: Joi.date().required(),
 });
-export type City = SchemaToType<typeof CitySchema>;
+export type ICity = SchemaToType<typeof CitySchema>;
