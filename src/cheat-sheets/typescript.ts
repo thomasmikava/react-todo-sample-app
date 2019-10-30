@@ -28,7 +28,7 @@ interface IUser {
 }
 
 type IAnyObject = {
-    [key: string]: any;
+    [key: string]: string;
 }
 
 // Adding types to variables
